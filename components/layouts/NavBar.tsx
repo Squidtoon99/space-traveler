@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '../Link';
 import styled from "styled-components";
 
 const Nav = styled.nav`
@@ -16,14 +16,6 @@ const Nav = styled.nav`
         list-style: none;
         li {
             margin: 0 1rem;
-            a {
-                color: ${({ theme }) => theme.colors.primary};
-                text-decoration: none;
-                transition: all 0.3s ease;
-                &:hover {
-                    color: ${({ theme }) => theme.colors.secondary};
-                }
-            }
         }
     }
 `;
@@ -38,13 +30,23 @@ const NavBar = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link href="/about">
+                    <Link href="/#about">
                         About
                     </Link>
                 </li>
                 <li>
+                    <Link href="/vehicles">
+                        Vehicles
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/pricing">
+                        Pricing
+                    </Link>
+                </li>
+                <li>
                     <Link href="/contact">
-                        Contact
+                        Training
                     </Link>
                 </li>
             </ul>

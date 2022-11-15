@@ -14,11 +14,9 @@ export const bounce = keyframes`
 
 export const fadeIn = keyframes`
     0% {
-        /* opacity: 0; */
-        translate: translateY(105px);
+        opacity: 0;
     }
     100% {
-        /* opacity: 1; */
-        translate: translateY(0);
+        opacity: 1;
     }
 `;

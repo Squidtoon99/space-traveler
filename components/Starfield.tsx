@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled, { keyframes } from "styled-components";
+import seedrandom from "seedrandom";
 
 const star = keyframes`
     from
@@ -34,10 +35,10 @@ const Star = styled.div`
     animation-name: ${star};
     animation-duration: var(--speed);
     animation-iteration-count: infinite;
-    animation-timing-function: linear;
+    animation-timing-function: ease-in-out;
     animation-delay: var(--delay);
     animation-fill-mode: both;
-
+    animation-play-state: var(--state);
     // set the width and height to 0.5 if the user is on mobile
     @media (max-width: 768px) {
         width: 0.5px;
@@ -45,22 +46,22 @@ const Star = styled.div`
         --distance: 
         
     }
+
+    @media (prefers-reduced-motion: reduce) {
+        animation-play-state: paused;
+    }
 `;
 
-const Starfield = ({ stars: star}: { stars: number; }) => {
-    const [stars, setStars] = useState(0);
-    useEffect(() => {
-        setStars(star);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+const Starfield = ({ stars, state }: { stars: number; state?: string}) => {
+    const [paused, setPaused] = useState(state === "paused" ? "paused" : "running");
 
-    return <Field>
+    return {Field: <Field>
         {Array.from(Array(stars), (e, i) => {
+            var rng = seedrandom(i);
             // @ts-ignore // This is really bad and also the most efficient way to do this.
-            return <Star key={i} style={{["--rotation"]: Math.random() * 360 + "deg", ['--speed']: Math.random() * 8000 + 4000 + "ms", ['--delay']: Math.random() * 5000 + "ms", ['--scale']: Math.random() * 8}} />
-                
+            return <Star key={i} style={{["--rotation"]: rng() * 360 + "deg", ['--speed']: (rng() *8000 + 4000) + "ms", ['--delay']: rng() * 5000 + "ms", ['--scale']: rng() * 8, ['--state']: paused}} />   
         })}
-    </Field>;
+    </Field >, state: paused, setState: setPaused};
 }
 
 

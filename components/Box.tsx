@@ -2,14 +2,15 @@ import styled from "styled-components";
 
 const Box = styled.div`
     position: relative;
-    width: 100vw;
-    height: 100vh;
+    min-width: 100vw;
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    /* align-items: center; */
     text-align: center;
     color: ${({ theme }) => theme.colors.primary};
+    padding: 5px 5px;
 `; 
 
 export default Box;

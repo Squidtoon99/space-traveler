@@ -5,6 +5,10 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  images: {
+    // wikimedia
+    domains: ['upload.wikimedia.org'],
+  }
 }
 
 module.exports = nextConfig
