@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import seedrandom from "seedrandom";
+import { useRouter } from "next/router";
+import path from "path";
 
 const star = keyframes`
     from
@@ -54,6 +56,18 @@ const Star = styled.div`
 
 const Starfield = ({ stars, state }: { stars: number; state?: string}) => {
     const [paused, setPaused] = useState(state === "paused" ? "paused" : "running");
+    const { pathname } = useRouter();
+    useEffect(() => {
+        if (pathname !== "/") {
+            setTimeout(() => {
+                setPaused("paused");
+            }, 500);
+        } else {
+            setTimeout(() => {
+                setPaused("running");
+            }, 500);
+        }
+    }, [pathname, paused]);
 
     return {Field: <Field>
         {Array.from(Array(stars), (e, i) => {
@@ -61,8 +75,10 @@ const Starfield = ({ stars, state }: { stars: number; state?: string}) => {
             // @ts-ignore // This is really bad and also the most efficient way to do this.
             return <Star key={i} style={{["--rotation"]: rng() * 360 + "deg", ['--speed']: (rng() *8000 + 4000) + "ms", ['--delay']: rng() * 5000 + "ms", ['--scale']: rng() * 8, ['--state']: paused}} />   
         })}
-    </Field >, state: paused, setState: setPaused};
+    </Field >, state: paused, setState: () => { } };
 }
+
+// q: What is the derivative of x^3 - 11x^2 + 39x - 47
 
 
 export default Starfield;

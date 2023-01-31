@@ -49,9 +49,9 @@ const Text = styled.span`
     transition: color .2s
 `; 
 
-const Button = ({ children }) => {
+const Button = ({ children, ...props }) => {
     return (
-        <SPX className="spx">
+        <SPX className="spx" {...props}> 
             <Hoverable />
             <Text>{children}</Text>
         </SPX>

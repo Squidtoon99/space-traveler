@@ -11,7 +11,7 @@ const Hero = () => {
             <br/>
         </Title>
         <Link href="/vehicles" style={{fontSize: "1.5em", marginTop: "-1em"}} passHref>
-            <Button>
+            <Button>    
                 Book Now
             </Button>
         </Link>

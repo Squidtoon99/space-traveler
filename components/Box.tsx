@@ -5,7 +5,7 @@ const Box = styled.div`
     min-width: 100vw;
     min-height: 100vh;
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: column;
     /* justify-content: center; */
     /* align-items: center; */
     text-align: center;
