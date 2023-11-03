@@ -11,6 +11,7 @@ const About = () => {
             <Title>
                 About
                 <p>Paragraph</p>
+
             </Title>
             <p>This is the about page</p>
         </div>

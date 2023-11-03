@@ -19,7 +19,6 @@ const GridItem = styled.div`
     /* width is same as height */
     width: 100%;
     min-height: 300px;
-    border: 1px solid white;
 `;
 
 const GridImage = styled(Image)`
@@ -33,12 +32,17 @@ const About = () => {
         <Grid>
             <GridItem>
                 <Title>Safety</Title>
-                <p>
-                    This is some safety tex
+                    This is some safety text
                 <Button href="/safety">Learn More</Button>
             </GridItem>
             <GridImage src={hornet} alt=""/>
-            <GridItem>About 3</GridItem>
+            <GridImage src={hornet} alt="" />
+            <GridItem>
+                <Title>History</Title>
+                xyz
+                <Button href="/history">Learn More</Button>
+            </GridItem>
+            
         </Grid>
         
     </Box>
